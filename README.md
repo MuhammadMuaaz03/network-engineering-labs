@@ -57,13 +57,6 @@ Each lab includes:
 ✔️ Shows **hands-on skill**, not just certifications  
 ✔️ Continuously expanded as skills grow  
 
----
-
-## 📌 About Me
-
-🎓 Undergraduate student pursuing a career in **Network Engineering / IT Infrastructure**  
-📘 Currently studying **CCNA-level networking concepts**  
-🔧 Focused on building **practical, production-minded skills**
 
 ---
 
