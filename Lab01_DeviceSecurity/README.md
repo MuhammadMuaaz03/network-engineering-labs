@@ -27,7 +27,7 @@ Implement basic device-level security controls to protect network infrastructure
 This was the Lab that I did, I was tasked with configuring the Router and Switch and I was asked to use specific commands to configure the passwords and the hostnames of the following devices
 
 
-![Console Password Prompt](cmd_line/.png)
+![Console Password Prompt](screenshots/cmd_line/.png)
 
 
 
