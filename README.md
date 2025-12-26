@@ -34,7 +34,7 @@ Built with the mindset of a **Junior Network Engineer / NOC Engineer**.
 
 | 🧪 Lab | 🔍 Focus |
 |------|---------|
-| 🔹Basic Device Security || First steps to Configuring terminals 
+|Basic Device Security 🔹 First steps to Configuring terminals 
 | 🔹 
 | 🔹 
 | 🔹 
