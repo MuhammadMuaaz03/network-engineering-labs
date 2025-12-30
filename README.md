@@ -35,8 +35,8 @@ Built with the mindset of a **Junior Network Engineer / NOC Engineer**.
 | 🧪 Lab | 🔍 Focus |
 |------|---------|
 | 🔹Lab1 : Device Security | First steps to Configuring terminals| 
-| 🔹 
-| 🔹 
+| 🔹Lab2 : Ethernet Switching | Layer 2 and Layer 3 Switching
+| 🔹  
 | 🔹 
 | 🔹 
 | 🔹 
