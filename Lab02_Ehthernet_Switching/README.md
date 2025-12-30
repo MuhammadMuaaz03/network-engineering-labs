@@ -1,123 +1,108 @@
-# 🧪 Lab: MAC Address Learning + ARP + Ping (Cisco Packet Tracer)
+# 🧪 CCNA Lab: MAC Address Learning, ARP, and ICMP
 
-This lab demonstrates how switches learn MAC addresses dynamically and how ARP is used before a ping (ICMP) can be delivered when devices have empty ARP and MAC tables.
-
----
-
-## 🖧 Topology & Addressing
-
-- **Network:** `192.168.1.0/24`
-- **Devices:** 2x Switches (SW1, SW2), 4x PCs (PC1–PC4)
-- **Key links:**
-  - PCs connect to access ports (FastEthernet)
-  - SW1 ↔ SW2 connected via `G0/1`
-
-![Topology](screenshots/01-topology.png)
-
-**What this shows (small detail):**
-- All PCs are on the same LAN/subnet.
-- Switches will forward frames based on MAC addresses (Layer 2).
-- The inter-switch link (`G0/1`) is how traffic reaches the PCs on the opposite switch.
+This lab demonstrates how **Layer 2 switches learn MAC addresses dynamically** and how **ARP is required before ICMP (ping)** can be successfully delivered when ARP and MAC tables are initially empty.
 
 ---
 
-## 1) Starting the Ping: ICMP is Ready, But ARP is Missing
+## 🖧 Network Topology
 
-![ICMP needs ARP](screenshots/02-icmp-needs-arp.png)
+![Topology](screenshots/ethernet_switching_0.png)
 
-**What this shows (small detail):**
-- PC1 is trying to send an **ICMP Echo Request (Type 8)** to `192.168.1.3` (PC3).
-- Packet Tracer is telling you the key concept:
-  - PC1 checks its **ARP table** for the destination IP’s MAC address.
-  - Since ARP is empty, PC1 **cannot build the Ethernet frame yet**.
-  - So it **buffers** the ICMP packet and starts the ARP process.
-
----
-
-## 2) ARP Request Frame: Broadcast at Layer 2
-
-![ARP request frame](screenshots/03-arp-request-frame.png)
-
-**What this shows (small detail):**
-- This is the actual **ARP Request** being built by PC1.
-- The most important fields here:
-
-**Ethernet II (Layer 2):**
-- **Destination MAC:** `FFFF.FFFF.FFFF` (broadcast)
-- **Source MAC:** PC1’s MAC
-- Broadcast means: *every device in the same broadcast domain will receive it.*
-
-**ARP (Layer 3 mapping info inside the frame):**
-- **Source IP:** `192.168.1.1` (PC1)
-- **Target IP:** `192.168.1.3` (PC3)
-- **Target MAC:** `0000.0000.0000` (unknown → that’s the point of ARP)
+**Explanation:**
+- All PCs are in the same subnet: `192.168.1.0/24`
+- Two Cisco 2960 switches (SW1 and SW2) are connected via `Gig0/1`
+- PCs are connected using FastEthernet access ports
+- Initially:
+  - PC ARP tables are empty
+  - Switch MAC address tables are empty
 
 ---
 
-## 3) ARP Flooding Across Both Switches
+## 1️⃣ ICMP Starts but Requires ARP Resolution
 
-![ARP flooding across network](screenshots/04-arp-flooding-topology.png)
+![ICMP requires ARP](screenshots/ethernet_switching_2.png)
 
-**What this shows (small detail):**
-- You can see the ARP envelope traveling across the topology.
-- Since ARP is a **broadcast**, switches behave like this:
-  - SW1 receives it and **floods it out every port except the incoming port**.
-  - The frame crosses the inter-switch link to SW2.
-  - SW2 floods it to its access ports as well.
-- **Result:** PC2, PC3, and PC4 all receive the ARP request, but only the PC with `192.168.1.3` should answer (PC3).
-
----
-
-## 4) Simulation Event List: ARP Happens First, Then ICMP
-
-![Event list ARP then ICMP](screenshots/05-event-list-arp-then-icmp.png)
-
-**What this shows (small detail):**
-- The event list confirms the correct order of operations:
-  1. **ICMP attempt begins** (PC1 wants to ping)
-  2. **ARP is triggered** (because MAC is unknown)
-  3. ARP frames propagate across SW1 → SW2 and out to PCs
-  4. Once ARP resolves, **ICMP frames appear again** (now the switch can forward unicast properly)
-
-This is the exact “real networking” behavior:  
-✅ **No ARP resolution → no successful ping delivery.**
+**Explanation:**
+- PC1 attempts to ping `192.168.1.3` (PC3)
+- ICMP Echo Request (Type 8) is generated at Layer 3
+- PC1 checks its ARP table to find the MAC address for `192.168.1.3`
+- Since no ARP entry exists, the ICMP packet is **buffered**
+- The ARP process is triggered to resolve the destination MAC address
 
 ---
 
-## 5) Ping Success (After ARP Resolution)
+## 2️⃣ ARP Request Frame (Layer 2 Broadcast)
 
-![Ping success](screenshots/06-ping-success.png)
+![ARP request frame](screenshots/ethernet_switching_3.png)
 
-**What this shows (small detail):**
-- The ping now succeeds (0% loss).
-- This confirms two things happened correctly:
-  - PC1 learned the **destination MAC** via ARP (or learned enough to forward)
-  - Switches learned MAC addresses dynamically during the exchange
-- After the first ARP resolution, later pings typically feel “instant” because the ARP entry already exists.
-
----
-
-## 6) MAC Address Table Learned on SW1
-
-![MAC address table](screenshots/07-mac-table-learned.png)
-
-**What this shows (small detail):**
-- `show mac address-table` displays what SW1 has learned dynamically.
-- Each entry exists because the switch saw that MAC as a **source MAC** on that port.
-
-In your screenshot, SW1 learned:
-- A MAC on `Fa0/1` (likely the PC on that port that transmitted)
-- A MAC on `Fa0/2` (another locally connected PC that transmitted)
-- A MAC on `Gi0/1` (a remote PC whose traffic came from SW2 across the inter-switch link)
-
-**Key concept:**  
-Switches learn MACs from **source addresses**, not because “a device exists.”  
-So if only some PCs transmit traffic, only those PCs appear in the table.
+**Explanation:**
+- PC1 creates an ARP Request encapsulated in an Ethernet II frame
+- Key fields:
+  - **Destination MAC:** `FFFF.FFFF.FFFF` (broadcast)
+  - **Source MAC:** PC1’s MAC address
+  - **Source IP:** `192.168.1.1`
+  - **Target IP:** `192.168.1.3`
+  - **Target MAC:** `0000.0000.0000` (unknown)
+- This broadcast allows all devices on the LAN to receive the request
 
 ---
 
-## 🧾 Useful Commands
+## 3️⃣ ARP Flooding Across the Switching Fabric
 
-### View MAC table
+![ARP flooding](screenshots/ethernet_switching_1.png)
+
+**Explanation:**
+- SW1 receives the ARP broadcast and floods it out all ports except the incoming port
+- The ARP request is forwarded across the inter-switch link (`Gig0/1`)
+- SW2 floods the ARP request to its access ports
+- PC2, PC3, and PC4 receive the ARP request
+- Only **PC3** (the device with IP `192.168.1.3`) will respond
+
+---
+
+## 4️⃣ Event List: ARP First, Then ICMP
+
+![Event list](screenshots/ethernet_switching_4.png)
+
+**Explanation:**
+- The simulation event list shows the correct sequence:
+  1. ICMP attempt begins
+  2. ARP request is generated and broadcast
+  3. ARP frames traverse SW1 → SW2 → PCs
+  4. ARP reply is sent back to PC1
+  5. ICMP traffic resumes after ARP resolution
+- This confirms that **ARP must complete before ICMP can succeed**
+
+---
+
+## 5️⃣ Successful Ping After ARP Resolution
+
+![Ping success](screenshots/ethernet_switching_5.png)
+
+**Explanation:**
+- PC1 successfully receives replies from the destination PC
+- 0% packet loss confirms correct ARP resolution and switching behavior
+- Subsequent pings are fast because the ARP entry is now cached
+
+---
+
+## 6️⃣ MAC Address Table Learned Dynamically
+
+![MAC address table](screenshots/ethernet_switching_6.png)
+
+**Explanation:**
+- The switch MAC address table now contains dynamically learned entries
+- Switches learn MAC addresses from the **source MAC field** of incoming frames
+- Observations:
+  - MACs learned on `Fa0/1` and `Fa0/2` belong to locally connected PCs
+  - MAC learned on `Gig0/1` belongs to a PC on the remote switch
+- Only devices that **transmit traffic** appear in the MAC table
+
+---
+
+## 🖥️ Verification Commands
+
 ```bash
 show mac address-table
+show mac address-table dynamic
+clear mac address-table dynamic
