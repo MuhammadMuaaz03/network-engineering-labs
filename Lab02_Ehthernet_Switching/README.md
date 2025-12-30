@@ -6,7 +6,7 @@ This lab demonstrates how **Layer 2 switches learn MAC addresses dynamically** a
 
 ## 🖧 Network Topology
 
-![Topology](screenshots/ethernet_switching_0.png)
+![Topology](Screenshots/ethernet_switching_0.png)
 
 **Explanation:**
 - All PCs are in the same subnet: `192.168.1.0/24`
@@ -20,7 +20,7 @@ This lab demonstrates how **Layer 2 switches learn MAC addresses dynamically** a
 
 ## 1️⃣ ICMP Starts but Requires ARP Resolution
 
-![ICMP requires ARP](screenshots/ethernet_switching_2.png)
+![ICMP requires ARP](Screenshots/ethernet_switching_2.png)
 
 **Explanation:**
 - PC1 attempts to ping `192.168.1.3` (PC3)
@@ -33,7 +33,7 @@ This lab demonstrates how **Layer 2 switches learn MAC addresses dynamically** a
 
 ## 2️⃣ ARP Request Frame (Layer 2 Broadcast)
 
-![ARP request frame](screenshots/ethernet_switching_3.png)
+![ARP request frame](Screenshots/ethernet_switching_3.png)
 
 **Explanation:**
 - PC1 creates an ARP Request encapsulated in an Ethernet II frame
@@ -49,7 +49,7 @@ This lab demonstrates how **Layer 2 switches learn MAC addresses dynamically** a
 
 ## 3️⃣ ARP Flooding Across the Switching Fabric
 
-![ARP flooding](screenshots/ethernet_switching_1.png)
+![ARP flooding](Screenshots/ethernet_switching_1.png)
 
 **Explanation:**
 - SW1 receives the ARP broadcast and floods it out all ports except the incoming port
@@ -62,7 +62,7 @@ This lab demonstrates how **Layer 2 switches learn MAC addresses dynamically** a
 
 ## 4️⃣ Event List: ARP First, Then ICMP
 
-![Event list](screenshots/ethernet_switching_4.png)
+![Event list](Screenshots/ethernet_switching_4.png)
 
 **Explanation:**
 - The simulation event list shows the correct sequence:
@@ -77,7 +77,7 @@ This lab demonstrates how **Layer 2 switches learn MAC addresses dynamically** a
 
 ## 5️⃣ Successful Ping After ARP Resolution
 
-![Ping success](screenshots/ethernet_switching_5.png)
+![Ping success](Screenshots/ethernet_switching_5.png)
 
 **Explanation:**
 - PC1 successfully receives replies from the destination PC
@@ -88,7 +88,7 @@ This lab demonstrates how **Layer 2 switches learn MAC addresses dynamically** a
 
 ## 6️⃣ MAC Address Table Learned Dynamically
 
-![MAC address table](screenshots/ethernet_switching_6.png)
+![MAC address table](Screenshots/ethernet_switching_6.png)
 
 **Explanation:**
 - The switch MAC address table now contains dynamically learned entries
