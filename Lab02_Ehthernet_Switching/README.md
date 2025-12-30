@@ -3,6 +3,14 @@
 This lab demonstrates how **Layer 2 switches learn MAC addresses dynamically** and how **ARP is required before ICMP (ping)** can be successfully delivered when ARP and MAC tables are initially empty.
 
 ---
+## 📚 Skills Learned
+
+`Cisco IOS` `Packet Tracer` `Layer 2 Switching` `Ethernet`
+`MAC Address Table` `Dynamic MAC Learning` `ARP`
+`Broadcast Traffic` `Unicast Traffic` `ICMP`
+`Ping Troubleshooting` `Inter-Switch Links`
+`Access Ports` `Simulation Mode Analysis`
+
 
 ## 🖧 Network Topology
 
