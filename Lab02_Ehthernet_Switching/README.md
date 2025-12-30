@@ -10,3 +10,12 @@
 
  
 
+
+
+##### Network Topology explained: 
+   'ARP' = Address Resolution Protocol
+   'ICMP' = Internet control message protocol
+   1: ARP Request ( --> PC2, PC3, PC4 ) { Broadcast message } 
+   2: ARP Reply    ( Received by PC1)  {unicast}
+   3: ICMP echo request ( --> PC 3 ) { unicast } 
+   4: ICMP echo reply  ( PC 1 )  {unicast} 
