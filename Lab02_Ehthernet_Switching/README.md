@@ -5,11 +5,17 @@ This lab demonstrates how **Layer 2 switches learn MAC addresses dynamically** a
 ---
 ## 📚 Skills Learned
 
-`Cisco IOS` `Packet Tracer` `Layer 2 Switching` `Ethernet`
-`MAC Address Table` `Dynamic MAC Learning` `ARP`
-`Broadcast Traffic` `Unicast Traffic` `ICMP`
-`Ping Troubleshooting` `Inter-Switch Links`
-`Access Ports` `Simulation Mode Analysis`
+**Switching & Layer 2:**  
+`Layer 2 Switching` `MAC Address Learning` `Ethernet Frames` `Access Ports`
+
+**Traffic & Protocols:**  
+`ARP` `ICMP` `Broadcast vs Unicast` `Ping`
+
+**Tools & Analysis:**  
+`Cisco IOS` `Packet Tracer` `Simulation Mode` `MAC Table Inspection`
+
+**Infrastructure:**  
+`Inter-Switch Links` `Gigabit Ethernet`
 
 
 ## 🖧 Network Topology
