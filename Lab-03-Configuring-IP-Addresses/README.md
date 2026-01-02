@@ -1,1 +1,1 @@
-
+#configurring IP Addresses, what I have learned and what I am going to talk about is going to be shown in this lab doc, on top of that what I have learend in terms of skillset and everything will also be learned in this lab, this 
