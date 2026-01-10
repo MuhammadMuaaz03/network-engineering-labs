@@ -30,7 +30,7 @@ This lab focuses on configuring a router with multiple interfaces, assigning IP 
 
 ## 1️⃣ PC IP Configuration (Static Addressing)
 
-### PC1 Configuration
+### Initial Configuration
 ![PC1 IP Config](screenshots/lab3-02.png)
 
 - IP Address: `15.0.0.1`
@@ -39,7 +39,7 @@ This lab focuses on configuring a router with multiple interfaces, assigning IP 
 
 ---
 
-### PC2 Configuration
+### SW1 Configuration
 ![PC2 IP Config](screenshots/lab3-03.png)
 
 - IP Address: `182.98.0.1`
@@ -47,7 +47,7 @@ This lab focuses on configuring a router with multiple interfaces, assigning IP 
 
 ---
 
-### PC3 Configuration
+### SW2 Configuration
 ![PC3 IP Config](screenshots/lab3-04.png)
 
 - IP Address: `201.191.20.1`
