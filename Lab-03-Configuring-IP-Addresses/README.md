@@ -6,7 +6,7 @@ This lab demonstrates how to configure a router with multiple interfaces, assign
 
 ## 🖧 Network Topology & Lab Instructions
 
-![Topology](screenshots/topology1.png)
+![Topology](screenshots/topology_1.png)
 
 ### Topology Overview
 - **Router:** R1
@@ -31,7 +31,7 @@ This lab demonstrates how to configure a router with multiple interfaces, assign
 ## 1️⃣ PC IP Configuration (Static Addressing)
 
 ### PC1 Configuration
-![PC1 IP Config](screenshots/06.png)
+![PC1 IP Config](screenshots/lab3-06.png)
 
 - IP Address: `15.0.0.1`
 - Subnet Mask: `255.0.0.0`
@@ -40,7 +40,7 @@ This lab demonstrates how to configure a router with multiple interfaces, assign
 ---
 
 ### PC2 Configuration
-![PC2 IP Config](screenshots/07.png)
+![PC2 IP Config](screenshots/lab3-07.png)
 
 - IP Address: `182.98.0.1`
 - Subnet Mask: `255.255.0.0`
@@ -49,7 +49,7 @@ This lab demonstrates how to configure a router with multiple interfaces, assign
 ---
 
 ### PC3 Configuration
-![PC3 IP Config](screenshots/08.png)
+![PC3 IP Config](screenshots/lab3-08.png)
 
 - IP Address: `201.191.20.1`
 - Subnet Mask: `255.255.255.0`
@@ -59,7 +59,7 @@ This lab demonstrates how to configure a router with multiple interfaces, assign
 
 ## 2️⃣ Router Interface Configuration
 
-![Router Interface Config](screenshots/05.png)
+![Router Interface Config](screenshots/lab3-05.png)
 
 R1 was configured with three GigabitEthernet interfaces:
 
@@ -82,7 +82,7 @@ Each interface was assigned:
 
 ## 3️⃣ Enabling Router Interfaces
 
-![No Shutdown](screenshots/03.png)
+![No Shutdown](screenshots/lab3-03.png)
 
 - Router interfaces are **administratively down by default**
 - The `no shutdown` command was issued on each interface
@@ -96,7 +96,7 @@ This step allows the router to begin forwarding traffic.
 
 ## 4️⃣ Interface Verification
 
-![Show IP Interface Brief](screenshots/04.png)
+![Show IP Interface Brief](screenshots/lab3-04.png)
 
 The `show ip interface brief` command confirms:
 - All three GigabitEthernet interfaces are **up/up**
@@ -107,7 +107,7 @@ The `show ip interface brief` command confirms:
 
 ## 5️⃣ Connectivity Testing
 
-![Ping Results](screenshots/09.png)
+![Ping Results](screenshots/lab3-09.png)
 
 From **PC1**, pings were sent to:
 - `182.98.0.1` (PC2)
@@ -147,15 +147,3 @@ From **PC1**, pings were sent to:
 `Layer 3 Connectivity`
 
 ---
-
-## ✅ Key Takeaways
-
-- Routers enable communication between **different IP networks**
-- Interfaces must be configured and enabled before routing can occur
-- `show ip interface brief` is a critical verification tool
-- Initial ping failures are expected due to ARP
-- Clear interface descriptions improve network documentation
-
----
-
-📌 *This lab reinforces core CCNA routing fundamentals and real-world Cisco IOS workflow.*
