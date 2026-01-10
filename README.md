@@ -36,7 +36,7 @@ Built with the mindset of a **Junior Network Engineer / NOC Engineer**.
 |------|---------|
 | 🔹Lab1 : Device Security | First steps to Configuring terminals| 
 | 🔹Lab2 : Ethernet Switching | Layer 2 and Layer 3 Switching
-| 🔹  
+| 🔹Lab3 : Configuring Ip Addresses | Testing connectivity  
 | 🔹 
 | 🔹 
 | 🔹 
