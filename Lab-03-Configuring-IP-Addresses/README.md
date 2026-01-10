@@ -1,28 +1,28 @@
-# 🧪 CCNA Lab: Router Interface Configuration & Inter-Network Connectivity
+# 🧪 CCNA Lab: Router Interface Configuration & Multi-Network Connectivity
 
-This lab focuses on configuring a router with multiple interfaces, assigning IP addresses to different networks, and verifying end-to-end connectivity between hosts across **multiple subnets** using static IP addressing.
+This lab demonstrates how to configure a router with multiple interfaces, assign IP addresses for different networks, and verify end-to-end connectivity between hosts on **separate subnets** using static IPv4 addressing.
 
 ---
 
-## 🖧 Network Topology & Lab Objectives
+## 🖧 Network Topology & Lab Instructions
 
-![Topology](screenshots/topology_1.png)
+![Topology](screenshots/topology1.png)
 
 ### Topology Overview
 - **Router:** R1
 - **Switches:** SW1, SW2, SW3
-- **PCs:** PC1, PC2, PC3
-- **Networks:**
-  - `15.0.0.0/8` (PC1)
-  - `182.98.0.0/16` (PC2)
-  - `201.191.20.0/24` (PC3)
+- **Hosts:** PC1, PC2, PC3
+- **Networks Used:**
+  - `15.0.0.0 /8` (PC1)
+  - `182.98.0.0 /16` (PC2)
+  - `201.191.20.0 /24` (PC3)
 
-### Lab Objectives
-1. Configure R1 hostname  
-2. View router interfaces and their status  
+### Lab Tasks
+1. Configure R1’s hostname  
+2. View R1’s interfaces and their status  
 3. Assign IP addresses to router interfaces  
-4. Enable router interfaces and add descriptions  
-5. Verify configuration using show commands  
+4. Enable interfaces and add descriptions  
+5. Verify interface configuration  
 6. Configure static IPs on PCs  
 7. Test connectivity using ping  
 
@@ -30,93 +30,93 @@ This lab focuses on configuring a router with multiple interfaces, assigning IP 
 
 ## 1️⃣ PC IP Configuration (Static Addressing)
 
-### Initial Configuration
-![PC1 IP Config](screenshots/lab3-02.png)
+### PC1 Configuration
+![PC1 IP Config](screenshots/06.png)
 
 - IP Address: `15.0.0.1`
 - Subnet Mask: `255.0.0.0`
-- Default gateway provided by R1 interface
+- Connected to SW1
 
 ---
 
-### SW1 Configuration
-![PC2 IP Config](screenshots/lab3-03.png)
+### PC2 Configuration
+![PC2 IP Config](screenshots/07.png)
 
 - IP Address: `182.98.0.1`
 - Subnet Mask: `255.255.0.0`
+- Connected to SW2
 
 ---
 
-### SW2 Configuration
-![PC3 IP Config](screenshots/lab3-04.png)
+### PC3 Configuration
+![PC3 IP Config](screenshots/08.png)
 
 - IP Address: `201.191.20.1`
 - Subnet Mask: `255.255.255.0`
+- Connected to SW3
 
 ---
 
 ## 2️⃣ Router Interface Configuration
 
-### Assigning IP Addresses & Descriptions
-![Router Interface Config](screenshots/lab3-05.png)
+![Router Interface Config](screenshots/05.png)
 
 R1 was configured with three GigabitEthernet interfaces:
 
-- **G0/0 → SW1**
-  - IP: `15.255.255.254 /8`
-- **G0/1 → SW2**
-  - IP: `182.98.255.254 /16`
-- **G0/2 → SW3**
-  - IP: `201.191.20.254 /24`
+- **GigabitEthernet0/0**
+  - Connected to SW1
+  - IP Address: `15.255.255.254 /8`
+- **GigabitEthernet0/1**
+  - Connected to SW2
+  - IP Address: `182.98.255.254 /16`
+- **GigabitEthernet0/2**
+  - Connected to SW3
+  - IP Address: `201.191.20.254 /24`
 
-Each interface was also given a **description** to clearly document its connection.
+Each interface was assigned:
+- An IP address
+- A subnet mask
+- A descriptive label identifying the connected switch
 
 ---
 
 ## 3️⃣ Enabling Router Interfaces
 
-![Interface No Shutdown](screenshots/lab3-06.png)
+![No Shutdown](screenshots/03.png)
 
-- Interfaces are **administratively down by default**
-- `no shutdown` was issued on each interface
+- Router interfaces are **administratively down by default**
+- The `no shutdown` command was issued on each interface
 - Console messages confirm:
-  - Physical link is up
-  - Line protocol is up
+  - Interface state changed to **up**
+  - Line protocol became **up**
+
+This step allows the router to begin forwarding traffic.
 
 ---
 
-## 4️⃣ Verification Using Show Commands
+## 4️⃣ Interface Verification
 
-### Common Mistake: Running Show Command in Config Mode
-![Invalid Show Command](screenshots/lab3-07.png)
+![Show IP Interface Brief](screenshots/04.png)
 
-- `show ip interface brief` does **not work in config mode**
-- Must be executed from **privileged EXEC mode**
-
----
-
-### Successful Verification
-![Show IP Interface Brief](screenshots/lab3-08.png)
-
-- All three GigabitEthernet interfaces are:
-  - **UP / UP**
-  - Assigned correct IP addresses
-- Confirms router is ready to forward traffic between networks
+The `show ip interface brief` command confirms:
+- All three GigabitEthernet interfaces are **up/up**
+- Each interface has the correct IP address
+- R1 is properly configured to route traffic between networks
 
 ---
 
-## 5️⃣ End-to-End Connectivity Testing
+## 5️⃣ Connectivity Testing
 
-![Ping Tests](screenshots/lab3-09.png)
+![Ping Results](screenshots/09.png)
 
 From **PC1**, pings were sent to:
 - `182.98.0.1` (PC2)
 - `201.191.20.1` (PC3)
 
 ### Observations
-- First ping times out due to ARP resolution
+- The first ping may time out due to ARP resolution
 - Subsequent replies succeed
-- Confirms **inter-network routing is functioning correctly**
+- Confirms successful **Layer 3 routing between all networks**
 
 ---
 
@@ -124,16 +124,16 @@ From **PC1**, pings were sent to:
 
 | Command | Mode | Purpose |
 |------|------|------|
-| `enable` | User EXEC | Enter privileged mode |
-| `configure terminal` | Privileged EXEC | Enter global config mode |
+| `enable` | User EXEC | Enter privileged EXEC mode |
+| `configure terminal` | Privileged EXEC | Enter global configuration mode |
 | `hostname R1` | Global Config | Set router hostname |
-| `interface gigabitEthernet 0/x` | Global Config | Enter interface config mode |
+| `interface gigabitEthernet 0/x` | Global Config | Enter interface configuration mode |
 | `ip address X.X.X.X Y.Y.Y.Y` | Interface Config | Assign IP address to interface |
-| `description` | Interface Config | Document interface purpose |
-| `no shutdown` | Interface Config | Enable interface |
-| `show ip interface brief` | Privileged EXEC | Verify interface status & IPs |
-| `show running-config` | Privileged EXEC | Verify saved configuration |
-| `ping` | PC / Router | Test Layer 3 connectivity |
+| `description` | Interface Config | Document interface connection |
+| `no shutdown` | Interface Config | Enable router interface |
+| `show ip interface brief` | Privileged EXEC | Verify interface status and IPs |
+| `show running-config` | Privileged EXEC | Review current configuration |
+| `ping` | PC | Test inter-network connectivity |
 
 ---
 
@@ -146,3 +146,16 @@ From **PC1**, pings were sent to:
 `Packet Tracer Troubleshooting`
 `Layer 3 Connectivity`
 
+---
+
+## ✅ Key Takeaways
+
+- Routers enable communication between **different IP networks**
+- Interfaces must be configured and enabled before routing can occur
+- `show ip interface brief` is a critical verification tool
+- Initial ping failures are expected due to ARP
+- Clear interface descriptions improve network documentation
+
+---
+
+📌 *This lab reinforces core CCNA routing fundamentals and real-world Cisco IOS workflow.*
