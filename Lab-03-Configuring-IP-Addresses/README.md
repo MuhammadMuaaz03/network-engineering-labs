@@ -146,16 +146,3 @@ From **PC1**, pings were sent to:
 `Packet Tracer Troubleshooting`
 `Layer 3 Connectivity`
 
----
-
-## ✅ Key Takeaways
-
-- Routers enable communication between **different IP networks**
-- Interfaces must be **configured and enabled** to forward traffic
-- `show ip interface brief` is essential for quick verification
-- Initial ping failures are normal due to ARP
-- Clear interface descriptions improve network documentation
-
----
-
-📌 **This lab reinforces core CCNA routing fundamentals and practical IOS workflow used in real networking environments.**
