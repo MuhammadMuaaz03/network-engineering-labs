@@ -2,7 +2,6 @@
 
 This lab focuses on configuring router and switch interfaces in a flat Layer 2 / Layer 3 network, manually setting **speed and duplex**, applying **interface descriptions**, disabling unused interfaces, and verifying interface status using Cisco IOS show commands.
 
-The goal is to practice **real-world interface hygiene** and verification rather than just basic connectivity.
 
 ---
 
