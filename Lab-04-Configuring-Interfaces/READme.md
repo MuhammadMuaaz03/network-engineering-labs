@@ -100,7 +100,7 @@ On SW1:
 
 ## 7️⃣ Switch Interface Status Verification (SW2)
 
-![SW2 Interface Status](screenshots/ss12.png)
+![SW2 Interface Status](screenshots/ss9.png)
 
 - Unused access ports were **disabled**
 - Active ports show correct operational status
@@ -126,7 +126,7 @@ On SW1:
 - IP: `172.16.0.3 /16`
 
 ### PC4
-![PC4 IP Config](screenshots/ss9.png)
+![PC4 IP Config](screenshots/ss12.png)
 
 - IP: `172.16.0.4 /16`
 
