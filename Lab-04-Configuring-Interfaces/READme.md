@@ -126,7 +126,7 @@ On SW1:
 - IP: `172.16.0.3 /16`
 
 ### PC4
-![PC4 IP Config](screenshots/ss12.png)
+![PC4 IP Config](screenshots/ss8.png)
 
 - IP: `172.16.0.4 /16`
 
