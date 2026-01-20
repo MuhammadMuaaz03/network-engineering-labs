@@ -164,5 +164,4 @@ On SW1:
 
 ---
 
-📌 *This lab reinforces practical interface management and verification skills used daily by network engineers.*
 
