@@ -89,7 +89,7 @@ On SW1:
 
 ## 6️⃣ Switch Interface Status Verification (SW1)
 
-![SW1 Interface Status](screenshots/ss5.png)
+![SW1 Interface Status](screenshots/ss9.png)
 
 - `show interfaces status` confirms:
   - Which ports are connected vs not connected
@@ -100,7 +100,7 @@ On SW1:
 
 ## 7️⃣ Switch Interface Status Verification (SW2)
 
-![SW2 Interface Status](screenshots/ss9.png)
+![SW2 Interface Status](screenshots/ss12.png)
 
 - Unused access ports were **disabled**
 - Active ports show correct operational status
