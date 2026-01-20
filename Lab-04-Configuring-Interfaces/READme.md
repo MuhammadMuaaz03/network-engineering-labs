@@ -165,15 +165,5 @@ On SW1:
 
 ---
 
-## ✅ Key Takeaways
-
-- Manual speed/duplex configuration prevents negotiation issues
-- Interface descriptions improve long-term maintainability
-- Unused ports should always be disabled
-- `interface range` enables scalable switch configuration
-- Verification commands are as important as configuration commands
-
----
-
 📌 *This lab reinforces practical interface management and verification skills used daily by network engineers.*
 
